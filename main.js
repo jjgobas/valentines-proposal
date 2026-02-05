@@ -20,27 +20,28 @@ for (let i = 0; i < buttons.length; i++) {
 const playfulButton = document.getElementById("playful-button");
 const container = document.querySelector("body");
 
-const phrases = [
-  "Are you sure? 💘",
-  "Try again 😉",
-  "Oops, too late! 💌",
-  "Catch me if you can! ❤️",
-];
-
 playfulButton.addEventListener("mouseover", () => {
-  // Get container and button dimensions
-  const maxX = container.clientWidth - playfulButton.offsetWidth;
-  const maxY = container.clientHeight - playfulButton.offsetHeight;
+  // padding so button never touches edges
+  const padding = 20;
 
-  // Random position
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
+  const maxX = window.innerWidth - playfulButton.offsetWidth - padding;
+  const maxY = window.innerHeight - playfulButton.offsetHeight - padding;
 
-  // Move the button
+  // random position
+  const randomX = Math.floor(Math.random() * maxX) + padding;
+  const randomY = Math.floor(Math.random() * maxY) + padding;
+
+  // move button
   playfulButton.style.left = randomX + "px";
   playfulButton.style.top = randomY + "px";
 
-  // Change text to a random playful phrase
+  // random phrase
+  const phrases = [
+    "Are you sure? 💘",
+    "Try again 😉",
+    "Oops, too late! 💌",
+    "Catch me if you can! ❤️",
+  ];
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
   playfulButton.textContent = randomPhrase;
 });
@@ -61,7 +62,9 @@ dummy.addEventListener("hover", () => {
 const yesButton = document.querySelector(
   ".main-container__buttons button:nth-child(1)",
 );
+
 const header = document.querySelector(".main-container__header");
+const headerSpan = document.querySelector(".main-container__header span");
 const body = document.body;
 
 // Confetti function
@@ -138,7 +141,8 @@ function createHearts() {
 
 // On Yes button click
 yesButton.addEventListener("click", () => {
-  header.innerHTML = `It's a date! <br> <span>February 14, 2026 - 1:00 PM</span>`;
+  header.innerHTML = `It's a date! <span>February 14, 2026 - 1:00 PM</span>`;
+  headerSpan.style.fontSize = "clamp(2rem, 6vw, 2rem)";
   playfulButton.style.display = "none";
   dummy.style.display = "none";
   yesButton.style.display = "none";
