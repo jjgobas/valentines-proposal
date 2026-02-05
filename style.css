@@ -44,12 +44,13 @@ body {
 }
 
 .main-container__header {
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 500;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .main-container__header span {
