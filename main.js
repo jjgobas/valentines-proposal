@@ -18,32 +18,51 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 const playfulButton = document.getElementById("playful-button");
-const container = document.querySelector("body");
 
-playfulButton.addEventListener("mouseover", () => {
-  // padding so button never touches edges
-  const padding = 20;
+const phrases = [
+  "Are you sure? 💘",
+  "Try again 😉",
+  "Oops, too late! 💌",
+  "Catch me if you can! ❤️",
+];
 
-  const maxX = window.innerWidth - playfulButton.offsetWidth - padding;
-  const maxY = window.innerHeight - playfulButton.offsetHeight - padding;
+// Move button function
+function movePlayfulButton() {
+  const padding = 10; // space from edges
+  const btnWidth = playfulButton.offsetWidth;
+  const btnHeight = playfulButton.offsetHeight;
 
-  // random position
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  // random position inside viewport
   const randomX = Math.floor(Math.random() * maxX) + padding;
   const randomY = Math.floor(Math.random() * maxY) + padding;
 
-  // move button
   playfulButton.style.left = randomX + "px";
   playfulButton.style.top = randomY + "px";
 
   // random phrase
-  const phrases = [
-    "Are you sure? 💘",
-    "Try again 😉",
-    "Oops, too late! 💌",
-    "Catch me if you can! ❤️",
-  ];
   const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
   playfulButton.textContent = randomPhrase;
+}
+
+// Mouse over (desktop) or touch (mobile)
+playfulButton.addEventListener("mouseover", movePlayfulButton);
+playfulButton.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // prevent mobile default touch
+  movePlayfulButton();
+});
+
+// Optional: adjust on resize to prevent it going offscreen
+window.addEventListener("resize", () => {
+  const btnRect = playfulButton.getBoundingClientRect();
+  if (btnRect.right > window.innerWidth) {
+    playfulButton.style.left = window.innerWidth - btnRect.width - 10 + "px";
+  }
+  if (btnRect.bottom > window.innerHeight) {
+    playfulButton.style.top = window.innerHeight - btnRect.height - 10 + "px";
+  }
 });
 
 const dummy = document.getElementById("dummy-playful-button");
