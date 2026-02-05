@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #0f172a;
+  --secondary: #64748b;
+  --accent: #fb7185;
+  --bg: #fff5f7;
+}
+
+html,
+button {
+  font-family: "Inter", sans-serif;
+  color: var(--primary);
+}
+
+body {
+  background: radial-gradient(
+    circle at center,
+    #fff5f7 0%,
+    #ffeff3 40%,
+    #ffffff 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  gap: 2rem;
+}
+
+.main-container__header {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container__header span {
+  color: var(--accent);
+}
+
+.main-container__buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.main-container__buttons button:nth-child(1) {
+  background-color: var(--primary);
+  color: #e9e9e9;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+  transform: translateY(0);
+}
+
+.main-container__buttons button:nth-child(2) {
+  background-color: #c7c7c7;
+  color: var(--primary);
+  font-weight: 600;
+  transition:
+    transform 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+  transform: translateY(0);
+}
+
+.main-container__buttons button:nth-child(1):hover {
+  background-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.main-container__buttons button:nth-child(1):active {
+  background-color: var(--accent);
+  transform: translateY(-10px) scale(0.98);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.main-container__buttons button:nth-child(1) span {
+  margin-left: 0.1rem;
+}
+
+#playful-button {
+  position: absolute;
+  background-color: #c7c7c7;
+  color: var(--primary);
+  font-weight: 600;
+  transition:
+    top 0.3s ease,
+    left 0.3s ease,
+    transform 0.2s ease;
+  display: none;
+}
+
+#playful-button:hover {
+  transform: scale(1.1);
+}
+
+.main-container__buttons button {
+  padding: 1rem 1.6rem;
+  border-radius: 0.8rem;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.main-container__description {
+  max-width: 600px;
+  text-align: center;
+}
+
+.main-container__description p {
+  font-weight: 200;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--secondary);
+}
+
+.main-container__description span {
+  font-weight: 400;
+  color: var(--primary);
+}
+
+/* Buttons */
+.secret-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.secret-notes h6 {
+  color: var(--accent);
+}
+
+.secret-notes__buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.secret-notes__buttons button {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.75rem;
+  background: #fdf7f7;
+  color: var(--accent);
+  border: 1px solid #f8c5cc;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secret-notes__text {
+  text-align: center;
+}
+
+.secret-notes__text p {
+  color: var(--accent);
+}
+
+.secret-notes button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: #fdcdd4;
+}
+
+.slide-animation {
+  animation: slide 0.3s ease forwards;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.confetti,
+.heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+}
+
+.heart {
+  font-size: 24px;
+  will-change: transform;
+}
+
+.confetti {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
